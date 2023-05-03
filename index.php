@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.scss">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -35,8 +34,10 @@
         <div class="fas fa-bars" id="menu-btn"></div>
         <a href="cartmenu.php" class="fas fa-shopping-cart"><div class="box"></div></a>
 
-        <div class="fas fa-user" id="login-btn"></div>
-    </div>
+        <!-- <div class="fas fa-user" id="login-btn"></div> -->
+            <a href="login_index.php" class="fas fa-user" id="login-btn"></a>
+       
+    <!-- </div> -->
 
 
     
@@ -52,7 +53,7 @@
         <input type="submit" value="sign in" class="btn">
         <div class="links">
             <a href="#">forget password</a>
-            <a href="#">sign up</a>
+            <a href="loginfile.php">sign up</a>
         </div>
     </form>
 
@@ -69,7 +70,7 @@
         <a href="#shop" class="btn">shop now</a>
     </div>
 
-    <img src="Shopping/image/bottom_wave.png" class="wave" alt="">
+    <img src="image/bottom_wave.png" class="wave" alt="">
 
 </section>
 
@@ -80,7 +81,7 @@
 <section class="about" id="about">
 
     <div class="image">
-        <img src="Shopping/image/about_img.png" alt="">
+        <img src="image/about_img.png" alt="">
     </div>
 
     <div class="content">
@@ -164,11 +165,11 @@
               // echo'  <a href="#" class="fas fa-eye"></a>';
            echo '</div>';
             echo '<div class="image">';
-             echo   '<img src="Shopping/image/product_01.jpg" alt="">';
+             echo   "<img src='$image' alt=''>";
             echo '</div>';
            echo '<div class="content">';
               echo "<h3>$product_name</h3>";
-               echo "<div class='amount'>TK $price</div>";
+               echo "<div class='amount'>BDT $price</div>";
            echo '</div>';
              echo'</div>';   
              echo'</form>';     
@@ -335,7 +336,7 @@
 
 
 <!-- custom js file link  -->
-<script src="Shopping/js/script.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+	<meta charset="UFT-8">
+	<meta name ="viewport" content="width=device-width, intial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" />
+	<link rel="stylesheet" type="text/css" href="css/design.css">
+	<title> Admin view</title>
+</head>
+<body>
+	<div class="container">
+		<h4 class="slogan"> </h4></br>
+				<form action="" method="GET">
+					<div class="input-group mb-3">
+						<input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Blood Bank Code">
+						<button class="button" type="submit" class="btn btn-primary">Search</button>
+					</div>
+				</form>
+</div>
+ <table class="result_table">
+		<thead>
+			<tr>
+				<th>Code</th>
+				<th>Blood Bank Name</th>
+				<th>Phone</th>
+				<th>Blood Inventory ID</th>
+				<th>Blood Group</th>
+				<th>Quantit</th>
+				
+					
+			</tr>
+		</thead>
+		<tbody>
+			<?php 
+				$con = mysqli_connect("localhost","root","","bloodbankmanagement");
+
+				if(isset($_GET['search']))
+				{
+					$filtervalues = $_GET['search'];
+					$query = "SELECT bb.code, bb.name, bb.address, bb.phone_number, b.bi_id,b.blood_group, b.quantity from blood_bank bb inner join blood_inventory b using(code) where b.code=$filtervalues ";
+					$query_run = mysqli_query($con, $query);
+
+					if(mysqli_num_rows($query_run) > 0)
+					{
+						foreach($query_run as $items)
+						{
+							?>
+							<tr>
+								 <td><?= $items['code']; ?></td>
+								<td><?= $items['name']; ?></td>
+								<td><?= $items['phone_number']; ?></td>
+								<td><?= $items['bi_id']; ?></td>
+							   
+								<td><?= $items['blood_group']; ?></td>
+								<td><?= $items['quantity']; ?></td>
+
+							</tr>
+							<?php
+						}
+					}
+					else
+					{
+						?>
+							<tr>
+								<td colspan="4">No Record Found</td>
+							</tr>
+						<?php
+					 }
+				}
+			?>
+		</tbody>
+	</table>                   
+</div>
+<div><a href="admin_panel.php">
+<button class="button">Back</button>  </a></div>
+		
+	
+	
+</body>
+</html>
